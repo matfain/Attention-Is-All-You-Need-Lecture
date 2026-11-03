@@ -1,0 +1,57 @@
+/* Design tokens (docs/design.md, Colour + Typography). Each role colour has one fixed meaning. */
+:root {
+  /* core */
+  --paper: #F4F5F7;
+  --paper-deep: #E9ECF1;
+  --panel: #FCFCFD;
+  --ink: #1A2232;
+  --graphite: #5D6678;
+  --rule: #D5DAE2;
+
+  /* roles (fills/strokes) and their text variants */
+  --src: #2D5BD2;      --src-ink: #1F43A3;
+  --tgt: #E8811A;      --tgt-ink: #A85A08;
+  --q: #7347C9;        --q-ink: #55309F;
+  --k: #138FB3;        --k-ink: #0C6A86;
+  --v: #4E9A2E;        --v-ink: #36731D;
+  --problem: #D1323F;  --problem-ink: #A3212C;
+  --key: #4F64AE;      /* bold key terms in anchors/bullets (5.1:1 on paper) */
+
+  /* role tints (~14% over paper) */
+  --src-tint: color-mix(in srgb, var(--src) 14%, var(--paper));
+  --tgt-tint: color-mix(in srgb, var(--tgt) 16%, var(--paper));
+  --q-tint: color-mix(in srgb, var(--q) 14%, var(--paper));
+  --k-tint: color-mix(in srgb, var(--k) 14%, var(--paper));
+  --v-tint: color-mix(in srgb, var(--v) 14%, var(--paper));
+  --problem-tint: color-mix(in srgb, var(--problem) 12%, var(--paper));
+
+  /* attention heatmap ramp (paper → deep indigo) */
+  --ramp-0: #F4F5F7; --ramp-1: #C9D2EA; --ramp-2: #8E9FD3; --ramp-3: #4F64AE; --ramp-4: #22305E;
+  --attn-block: #C9D2EA;
+  --hl-tint: color-mix(in srgb, #8E9FD3 18%, var(--panel));
+
+  /* type */
+  --font-text: 'Deck Digits', 'Atkinson Hyperlegible', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --fs-title-slide: 84px;
+  --fs-subtitle: 40px;
+  --fs-title: 54px;
+  --fs-anchor: 32px;
+  --fs-label: 26px;
+  --fs-caption: 22px;
+  --fs-footer: 20px;
+
+  /* canvas */
+  --W: 1920px;
+  --H: 1080px;
+  --mx: 112px;
+  --mt: 80px;
+
+  /* motion */
+  --t-slide: 200ms;
+  --t-build: 180ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --t-slide: 0ms; --t-build: 0ms; }
+}

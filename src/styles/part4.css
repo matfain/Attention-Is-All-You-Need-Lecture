@@ -1,0 +1,153 @@
+/* Part 4 + Part 5 slide styles. */
+i.mv { font-family: KaTeX_Math; font-style: italic; }
+sub { font-size: 20px; line-height: 0; }
+
+/* heads chart */
+rect.hbar { fill: var(--graphite); opacity: .55; }
+rect.hbar.base { fill: var(--ink); opacity: 1; }
+svg text.hval { font-family: KaTeX_Main, var(--font-text); font-size: 26px; text-anchor: middle; }
+svg text.hval.base { font-weight: 700; }
+svg text.hppl { font-family: KaTeX_Main, var(--font-text); font-size: 22px; text-anchor: middle; fill: var(--panel); }
+.hx { font-size: 26px; }
+.hx.sub { font-size: 22px; color: var(--graphite); }
+.hx.base { font-weight: 700; }
+rect.noise { fill: url(#hatch); stroke: var(--graphite); stroke-width: 1.5; stroke-dasharray: 5 4; }
+svg text.noise-q { font-size: 30px; font-weight: 700; fill: var(--graphite); dominant-baseline: central; }
+.noise-lab { font-size: 24px; color: var(--graphite); font-style: italic; }
+
+/* 4.2 size scatter */
+circle.pt.basept { fill: var(--ink); stroke: var(--panel); stroke-width: 3; }
+rect.pt.big { fill: var(--panel); stroke: var(--ink); stroke-width: 3; }
+.sz-lab { font-size: 24px; color: var(--ink); }
+.sz-lab.base { font-weight: 700; }
+.sz-lab .pt-v { font-family: KaTeX_Main; color: var(--graphite); }
+.sz-call { font-size: 24px; line-height: 1.35; }
+.sz-call b { color: var(--key); }
+
+/* 4.3 */
+table.t43 { font-size: 30px; }
+table.t43 th, table.t43 td { padding: 14px 32px; }
+.pe-ext { display: inline-flex; align-items: center; gap: 12px; }
+
+/* 4.4 */
+table.t3 { font-size: 24px; line-height: 1.15; }
+table.t3 th, table.t3 td { padding: 3px 16px; }
+.t3-wrap { display: flex; flex-direction: column; align-items: center; }
+table.t3 tr.near td { outline: none; }
+table.t3 td.grp { color: var(--graphite); }
+table.t3 tr.near td { background: var(--hl-tint); }
+table.t3 tr.near td:first-child { box-shadow: inset 3px 0 0 var(--ramp-2); }
+table.t3 tr.large td { font-weight: 700; }
+table.t3 tr.large td.dlt { color: var(--ink); }
+table.t3 tr.hl td { background: var(--paper-deep); font-weight: 700; }
+.t3-key { margin-top: 8px; font-size: 22px; color: var(--graphite); display: flex; align-items: center; gap: 10px; }
+.key-near { display: inline-block; width: 26px; height: 18px; background: var(--hl-tint); box-shadow: inset 3px 0 0 var(--ramp-2); }
+.expect-h { font-size: 34px; font-weight: 700; margin-bottom: 22px; }
+.expect .anchors > li { margin-bottom: 20px; }
+.icon-list { list-style: none; margin: 0; padding: 0; }
+.icon-list > li { display: flex; align-items: center; gap: 20px; font-size: 30px; line-height: 1.3; margin-bottom: 30px; }
+.icon-list > li .icon { flex: none; }
+.icon-list b { color: var(--key); }
+/* s-4-4 numbered criticisms ↔ table highlights */
+.nb { display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--key); color: #fff; font-size: 20px; font-weight: 700; flex: none; font-family: KaTeX_Main, var(--font-text); }
+.icon-list > li { transition: opacity 200ms ease; }
+.icon-list > li.dimmed { opacity: .38; }
+.icon-list > li { margin-bottom: 26px; }
+table.t3 .nb { width: 28px; height: 28px; font-size: 20px; margin-left: 8px; vertical-align: middle; font-style: normal; }
+table.t3 .nb3, table.t3 .nb4, table.t3 .cm-tag { visibility: hidden; }
+table.t3 td.bleu { position: relative; }
+table.t3 .nb4 { position: absolute; right: -20px; top: 50%; transform: translateY(-50%); margin: 0; }
+table.t3[data-mode="2"] .nb3, table.t3[data-mode="2"] .cm-tag, table.t3[data-mode="3"] .nb4 { visibility: visible; }
+table.t3[data-mode="2"] td.par, table.t3[data-mode="2"] th.par { box-shadow: inset 3px 0 0 var(--key), inset -3px 0 0 var(--key); }
+table.t3[data-mode="2"] tr.grp-a td.grp { color: var(--key); font-weight: 700; }
+table.t3 .cm-tag { font-size: 20px; font-weight: 700; color: var(--key); font-style: normal; margin-left: 6px; }
+table.t3[data-mode="3"] tr.ls0 td.ppl, table.t3[data-mode="3"] tr.ls0 td.bleu { box-shadow: inset 0 0 0 3px var(--key); font-weight: 700; }
+table.t3[data-mode="1"] tr.near td { background: color-mix(in srgb, var(--key) 22%, var(--paper)); }
+table.t3[data-mode="1"] tr.near td:first-child { box-shadow: inset 4px 0 0 var(--key); }
+table.t3[data-mode="1"] tr.near td.dlt { color: var(--key); font-weight: 700; }
+.t3-key .nb { width: 28px; height: 28px; font-size: 20px; }
+.s44-bottom { font-size: 30px; line-height: 1.35; border-top: 1px solid var(--rule); padding-top: 14px; }
+.s4-list > li { font-size: 29px; margin-bottom: 16px; }
+.nowrap { white-space: nowrap; }
+
+/* 5.1 takeaways */
+.tk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px 44px; }
+.tk-card { display: flex; align-items: center; gap: 30px; background: var(--panel); border: 1.5px solid var(--rule); border-radius: 18px; padding: 36px 44px; min-height: 340px; }
+.tk-card.warn { border-color: var(--problem); background: color-mix(in srgb, var(--problem) 4%, var(--panel)); }
+.tk-card svg { flex: none; }
+.tk-h { font-size: 38px; font-weight: 700; line-height: 1.25; }
+.tk-h b { color: var(--key); }
+.tk-sub { font-size: 31px; color: var(--graphite); margin-top: 10px; line-height: 1.35; }
+.tk-sub b.problem-ink { color: var(--problem-ink); }
+path.tk-arc { fill: none; stroke: var(--ramp-3); stroke-width: 4; stroke-linecap: round; }
+rect.tk-chip.src { fill: var(--src-tint); stroke: var(--src); stroke-width: 2; }
+rect.tk-chip.tgt { fill: var(--tgt-tint); stroke: var(--tgt); stroke-width: 2; }
+rect.tk-bar { fill: var(--graphite); opacity: .5; }
+rect.tk-bar.win { fill: var(--key); opacity: 1; }
+rect.tk-cell { fill: var(--problem-tint); stroke: var(--problem); stroke-width: 1.2; }
+svg text.tk-n2 { font-size: 20px; fill: var(--problem-ink); text-anchor: middle; font-weight: 700; }
+
+/* 5.2 timeline */
+svg line.tl-axis { stroke: var(--ink); stroke-width: 3; }
+.tl-stem line { stroke: var(--graphite); stroke-width: 2; }
+.tl-stem circle { fill: var(--ink); }
+.tl-stem { transition: opacity var(--t-build) ease; }
+.tl-card {
+  transform: translate(-50%, -50%); min-width: 230px; width: max-content; max-width: 280px; display: flex; flex-direction: column; align-items: center; gap: 2px;
+  background: var(--panel); border: 1.5px solid var(--rule); border-radius: 14px; padding: 10px 10px;
+  font-size: 24px; text-align: center; transition: opacity var(--t-build) ease;
+}
+.tl-card.origin { border: 3px solid var(--ink); }
+.tl-card > b { white-space: nowrap; }
+img.tl-logo { height: 48px; width: auto; max-width: 120px; object-fit: contain; }
+.tl-dom { font-size: 20px; line-height: 1.2; color: var(--graphite); }
+.tl-year { font-size: 24px; color: var(--ink); background: var(--paper); padding: 0 6px; }
+.predicted { background: var(--panel); border: 1px solid var(--rule); border-radius: 14px; padding: 20px 24px; }
+.pred-h { font-size: 26px; font-weight: 700; margin-bottom: 12px; }
+.pred-row { display: flex; align-items: center; gap: 12px; font-size: 24px; line-height: 1.3; margin-top: 12px; }
+.pred-row .icon { flex: none; }
+
+/* 5.3 questions */
+.qa-tile {
+  width: 360px; height: 170px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+  font: inherit; font-size: 24px; color: var(--ink); background: var(--panel);
+  border: 1.5px solid var(--rule); border-radius: 14px; cursor: pointer;
+}
+.qa-tile:hover { border-color: var(--ink); background: var(--paper-deep); }
+.qa-tile:focus-visible { outline: 3px solid var(--q); outline-offset: 2px; }
+.qa-who { font-size: 26px; color: var(--graphite); }
+
+/* references */
+.refs { margin: 0; padding-left: 40px; columns: 2; column-gap: 64px; font-size: 22px; line-height: 1.35; }
+.refs li { margin-bottom: 14px; break-inside: avoid; padding-left: 6px; }
+
+/* ablation card (4.1–4.3) */
+table.abl-card { left: 50%; transform: translateX(-50%); top: 168px; border-collapse: collapse; font-size: 28px; line-height: 1.3; }
+table.abl-card th { text-align: left; color: var(--key); font-weight: 700; padding: 8px 32px 8px 0; white-space: nowrap; vertical-align: top; }
+table.abl-card td { padding: 8px 0; border-bottom: 1px solid var(--rule); white-space: nowrap; }
+table.abl-card tr:first-child th, table.abl-card tr:first-child td { border-top: 2px solid var(--ink); }
+table.abl-card tr:last-child td, table.abl-card tr:last-child th { border-bottom: 2px solid var(--ink); }
+table.abl-card th { border-bottom: 1px solid var(--rule); }
+table.abl-card td b { color: var(--key); }
+.sz-title { text-align: center; font-size: 28px; font-weight: 700; }
+/* 4.3 cards */
+.pe-cards { display: flex; justify-content: center; gap: 60px; }
+.pe-card { width: 600px; background: var(--panel); border: 1.5px solid var(--rule); border-radius: 16px; padding: 22px 40px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.pe-card.ok { border: 2px solid var(--ink); }
+.pe-h { font-size: 30px; font-weight: 700; }
+.pe-card .pe-ext { font-size: 26px; display: flex; align-items: center; gap: 12px; }
+.pe-nums { font-size: 26px; color: var(--graphite); }
+path.pe-w { fill: none; stroke: var(--ink); stroke-width: 3; }
+path.pe-w.ext { stroke: var(--graphite); stroke-dasharray: 6 6; }
+line.pe-L { stroke: var(--problem); stroke-width: 2; stroke-dasharray: 5 5; }
+svg text.pe-Lt { font-size: 20px; fill: var(--problem-ink); text-anchor: end; }
+rect.pe-miss { fill: var(--problem-tint); stroke: var(--problem); stroke-width: 2; stroke-dasharray: 6 4; }
+svg text.pe-q { font-size: 22px; font-weight: 700; fill: var(--problem-ink); text-anchor: middle; dominant-baseline: central; }
+
+/* 4.4: the big model row is set apart (not a one-factor ablation); symbol legend */
+table.t3 tr.big-row td { font-style: italic; border-top: 2px solid var(--ink); }
+table.t3 th { white-space: nowrap; }
+table.t3 td.base-cfg { font-size: 21px; white-space: nowrap; }
+.t3-legend { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 20px; font-size: 22px; color: var(--graphite); border-top: 1px solid var(--rule); padding-top: 12px; }
+.t3-legend > div { display: flex; align-items: baseline; gap: 10px; }
+.t3-legend .katex { color: var(--ink); font-size: 1.1em; }

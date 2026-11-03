@@ -1,0 +1,133 @@
+/* Part 3 slide styles. */
+.num { font-family: KaTeX_Main, var(--font-text); font-variant-numeric: tabular-nums; }
+sup { font-size: 20px; line-height: 0; }
+.anchors ul.sub { list-style: none; margin: 6px 0 0; padding: 0; }
+.anchors ul.sub > li { position: relative; padding-left: 30px; margin: 4px 0; font-size: 28px; }
+.anchors ul.sub > li::before { content: '–'; position: absolute; left: 4px; color: var(--graphite); }
+
+/* chart primitives */
+svg line.grid { stroke: var(--rule); stroke-width: 1; }
+svg line.axis { stroke: var(--graphite); stroke-width: 1.5; }
+svg text.ax { font-family: KaTeX_Main, var(--font-text); font-size: 22px; fill: var(--graphite); text-anchor: middle; dominant-baseline: central; }
+svg text.ax tspan.sup { font-size: 20px; }
+.ax-y { transform: translate(-50%, -50%) rotate(-90deg) !important; white-space: nowrap; }
+
+/* s-3-1 Table 1 */
+table.t1 th, table.t1 td { padding: 12px 30px; }
+table.t1 .katex { font-size: 1.1em; }
+.hc { display: flex; justify-content: center; gap: 48px; }
+.hc-card { background: var(--panel); border: 1px solid var(--rule); border-radius: 14px; padding: 18px 28px; width: 780px; }
+.hc-title { font-size: 26px; font-weight: 700; margin-bottom: 10px; }
+.hc-row { display: flex; align-items: center; gap: 14px; height: 44px; }
+.num i { font-family: KaTeX_Math; }
+svg tspan.num { font-family: KaTeX_Main; }
+.hc-lab { width: 190px; flex: none; font-size: 24px; color: var(--graphite); }
+.hc-bar { height: 26px; border-radius: 3px; flex: none; }
+.hc-bar.win { background: var(--ink); }
+.hc-bar.lose { background: var(--graphite); opacity: .55; }
+.hc-val { font-size: 24px; white-space: nowrap; }
+.hc-res { font-size: 26px; margin-top: 8px; }
+.hc-res b { color: var(--key); }
+
+/* s-3-2 data */
+.ds { display: flex; gap: 40px; }
+.ds-card { flex: 1; background: var(--panel); border: 1px solid var(--rule); border-radius: 14px; padding: 32px 36px; display: flex; flex-direction: column; gap: 26px; }
+.ds-pair { font-weight: 700; font-size: 36px; }
+.ds-ex { display: flex; align-items: center; gap: 12px; }
+.ds-size { display: flex; flex-direction: column-reverse; align-items: flex-start; gap: 10px; font-size: 30px; }
+.ds-bar { height: 38px; border-radius: 4px; background: var(--src); opacity: .75; min-width: 4px; flex: none; }
+.ds-voc { font-size: 26px; color: var(--graphite); }
+.metrics { display: flex; gap: 32px; }
+.metric { flex: 1; padding: 18px 28px; border-left: 5px solid var(--key); font-size: 28px; line-height: 1.4; }
+.metric b { display: block; color: var(--key); font-size: 32px; }
+
+/* s-3-3 training */
+.tiles { display: flex; gap: 40px; }
+.tile { flex: 1; background: var(--panel); border: 1px solid var(--rule); border-radius: 14px; padding: 22px 28px; font-size: 28px; line-height: 1.45; }
+.tile-h { font-weight: 700; color: var(--key); margin-bottom: 6px; font-size: 30px; }
+.s33-eq .katex { font-size: 36px; }
+polyline.lr { fill: none; stroke: var(--ink); stroke-width: 3.5; stroke-linejoin: round; }
+circle.lr-peak { fill: var(--ink); }
+
+/* s-3-4 results */
+table.t2 { font-size: 30px; }
+table.t2 th, table.t2 td { padding: 10px 34px; }
+.s34-tab { display: flex; flex-direction: column; align-items: center; }
+.s34-tab .s34-note { align-self: center; }
+table.t2 thead tr.sub th { font-weight: 400; font-size: 26px; border-bottom: 1px solid var(--ink); }
+table.t2 thead tr:first-child th { border-bottom: 0; }
+table.t2 thead tr:first-child th[colspan] { border-bottom: 1px solid var(--rule); }
+table.t2 th[rowspan] { border-bottom: 1px solid var(--ink) !important; vertical-align: bottom; }
+table.t2 .rowsub { font-size: 22px; font-weight: 400; }
+table.t2 td.best { font-weight: 700; color: var(--key); }
+table.t2 tr.ours td { background: var(--hl-tint); }
+.s34-note { margin-top: 14px; }
+.s34-anchors { display: flex; gap: 48px; align-items: center; }
+.s34-anchors > * { flex: 1; font-size: 30px; }
+.s34-anchors .badge.wrap { font-size: 24px; }
+rect.sc-region { fill: var(--hl-tint); }
+path.sc-guide { fill: none; stroke: var(--ramp-2); stroke-width: 2; stroke-dasharray: 7 6; }
+.sc-region-lab { font-size: 24px; font-weight: 700; color: var(--key); }
+circle.pt, rect.pt { fill: var(--graphite); }
+rect.pt.ens { fill: var(--panel); stroke: var(--graphite); stroke-width: 3; }
+circle.pt.ours { fill: var(--key); stroke: var(--panel); stroke-width: 3; }
+svg text.pt-lab { font-size: 22px; fill: var(--graphite); dominant-baseline: central; }
+svg text.pt-lab.ours { font-size: 24px; fill: var(--ink); font-weight: 700; }
+svg text.pt-lab tspan.pt-v { font-family: KaTeX_Main, var(--font-text); }
+.lg-dot { display: inline-block; width: 16px; height: 16px; border-radius: 50%; background: var(--graphite); vertical-align: middle; }
+.lg-dia { display: inline-block; width: 13px; height: 13px; border: 3px solid var(--graphite); transform: rotate(45deg); vertical-align: middle; margin: 0 4px 0 8px; }
+
+/* s-3-5 parsing setup */
+.s35-vis { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.s35-io { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.s35-in { display: flex; gap: 10px; }
+.s35-arrow .katex { font-size: 36px; }
+.s35-out { font-size: 32px; padding: 10px 22px; background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; }
+.facts { display: flex; flex-direction: column; gap: 26px; }
+.fact { background: var(--panel); border: 1px solid var(--rule); border-radius: 14px; padding: 18px 26px; font-size: 27px; line-height: 1.45; }
+.fact > b { display: block; color: var(--key); font-size: 30px; margin-bottom: 2px; }
+.fact b.key { color: var(--key); }
+path.tr-e { fill: none; stroke: var(--graphite); stroke-width: 2.5; }
+svg text.tr-n { font-family: var(--font-mono); font-size: 28px; font-weight: 500; text-anchor: middle; dominant-baseline: central; }
+
+/* s-3-6 parsing results */
+.pr { display: flex; justify-content: center; gap: 60px; }
+.pr-chart { display: flex; flex-direction: column; align-items: center; }
+.pr-title { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+rect.hb { fill: var(--graphite); opacity: .55; }
+rect.hb.ours { fill: var(--key); opacity: 1; }
+svg text.hb-lab { font-size: 22px; text-anchor: end; dominant-baseline: central; fill: var(--ink); }
+svg text.hb-lab.ours, svg text.hb-val.ours { font-weight: 700; }
+svg text.hb-val { font-family: KaTeX_Main, var(--font-text); font-size: 24px; dominant-baseline: central; }
+.pr-axis { margin-top: 4px; }
+
+.why-q { font-size: 30px; font-weight: 700; text-align: center; margin-bottom: 18px; }
+.why-row { display: flex; gap: 32px; }
+.why-tile { flex: 1; background: var(--panel); border: 1px solid var(--rule); border-radius: 14px; padding: 18px 24px; font-size: 26px; line-height: 1.4; }
+.why-tile b { display: block; color: var(--key); font-size: 28px; margin-bottom: 4px; }
+
+/* s-3-1 */
+.t1-def { font-size: 28px; }
+.t1-anch { width: max-content; margin: 0 auto; }
+.why-tile ul { margin: 6px 0 0; padding-left: 26px; }
+.why-tile li { margin: 2px 0; }
+/* s-3-2 */
+.ds-split { width: max-content; margin: 0 auto; line-height: 1.5; }
+/* s-3-4: bottom-line stat tiles */
+.s34-stats { display: flex; gap: 32px; }
+.s34-stats .stat { flex: 1; text-align: center; border-top: 4px solid var(--key); padding-top: 14px; }
+.s34-stats .stat b { display: block; font-size: 46px; color: var(--key); line-height: 1.15; }
+.s34-stats .stat .sl { font-size: 26px; color: var(--graphite); line-height: 1.35; margin-top: 6px; }
+.s34-stats .stat .sl b { display: inline; font-size: inherit; line-height: inherit; color: var(--key); }
+.s35-legend { text-align: center; font-size: 24px; margin-top: 6px; }
+/* s-3-5 semi-supervised pipeline */
+rect.pp-box { stroke-width: 2; }
+rect.pp-text { fill: var(--src-tint); stroke: var(--src); }
+rect.pp-parser, rect.pp-step { fill: var(--panel); stroke: var(--ink); }
+rect.pp-test { fill: var(--paper-deep); stroke: var(--ink); stroke-dasharray: 6 5; }
+rect.pp-out { fill: color-mix(in srgb, var(--key) 14%, var(--paper)); stroke: var(--key); stroke-width: 2.5; }
+.pp-lab { font-size: 24px; color: var(--ink); }
+.pp-side { font-size: 22px; line-height: 1.25; }
+.pp-sub { font-size: 24px; }
+table.t1 td.t1-sa { color: var(--key); font-weight: 700; }
+table.t1 td.t1-rec { color: var(--problem-ink); font-weight: 700; }

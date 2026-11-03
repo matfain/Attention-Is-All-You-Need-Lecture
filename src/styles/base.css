@@ -1,0 +1,125 @@
+/* Canvas, slide frame, typography, footer. */
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; height: 100%; overflow: hidden;
+  background: var(--paper-deep);
+  color: var(--ink);
+  font-family: var(--font-text);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+#viewport { position: fixed; inset: 0; background: var(--paper-deep); }
+#stage {
+  position: absolute; left: 0; top: 0;
+  width: var(--W); height: var(--H);
+  transform-origin: 0 0;
+  background: var(--paper);
+  overflow: hidden;
+}
+
+/* slides */
+.slide {
+  position: absolute; inset: 0;
+  opacity: 0; visibility: hidden;
+  transition: opacity var(--t-slide) ease, visibility 0s linear var(--t-slide);
+}
+.slide.active {
+  opacity: 1; visibility: visible;
+  transition: opacity var(--t-slide) ease, visibility 0s;
+}
+.slide-title {
+  position: absolute; left: var(--mx); top: 72px; right: var(--mx);
+  margin: 0;
+  font-size: var(--fs-title); font-weight: 700; line-height: 1.15;
+  letter-spacing: -0.005em; text-align: center;
+}
+.slide.has-thumb .slide-title { left: 362px; right: 362px; }
+.abs { position: absolute; }
+
+/* build steps: fade only */
+[data-build], [data-build-max] {
+  transition: opacity var(--t-build) ease, visibility 0s linear 0s;
+}
+.build-off {
+  opacity: 0 !important; visibility: hidden;
+  transition: opacity var(--t-build) ease, visibility 0s linear var(--t-build) !important;
+  pointer-events: none;
+}
+
+/* text anchors */
+.anchors { margin: 0; padding: 0; list-style: none; font-size: var(--fs-anchor); line-height: 1.4; }
+.anchors > li { position: relative; padding-left: 34px; margin: 0 0 18px; }
+.anchors > li::before {
+  content: ''; position: absolute; left: 4px; top: 0.62em;
+  width: 10px; height: 10px; border-radius: 50%; background: var(--graphite);
+}
+.anchors > li.plain { padding-left: 0; }
+.anchors > li.plain::before { display: none; }
+.anchor-line { font-size: var(--fs-anchor); line-height: 1.4; }
+.quote { font-style: italic; }
+.muted { color: var(--graphite); }
+.caption { font-size: var(--fs-caption); line-height: 1.3; color: var(--graphite); }
+.label { font-size: var(--fs-label); line-height: 1.3; }
+b, strong { font-weight: 700; }
+.anchors b, .anchor-line b { color: var(--key); }
+.anchors b.q-ink { color: var(--q-ink); } .anchors b.k-ink { color: var(--k-ink); } .anchors b.v-ink { color: var(--v-ink); }
+.anchors b.src-ink { color: var(--src-ink); } .anchors b.tgt-ink { color: var(--tgt-ink); } .anchors b.problem-ink { color: var(--problem-ink); }
+.anchor-line b.problem-ink { color: var(--problem-ink); }
+.src-ink { color: var(--src-ink); } .tgt-ink { color: var(--tgt-ink); }
+.q-ink { color: var(--q-ink); } .k-ink { color: var(--k-ink); } .v-ink { color: var(--v-ink); }
+.problem-ink { color: var(--problem-ink); }
+.mono { font-family: var(--font-mono); }
+
+/* KaTeX sizing: base math matches surrounding text; display eqs ~44px */
+.katex { font-size: 1.06em; }
+.eq-display .katex { font-size: 44px; }
+.katex-display { margin: 0; }
+
+/* footer */
+.footer {
+  position: absolute; left: var(--mx); right: var(--mx); bottom: 0; height: 76px;
+  display: flex; align-items: center; gap: 48px;
+  border-top: 1px solid var(--rule);
+  font-size: var(--fs-footer); color: var(--graphite);
+  transition: opacity var(--t-slide) ease;
+  z-index: 50;
+}
+.footer.hidden { opacity: 0; pointer-events: none; }
+.footer .cite { flex: 1; font-style: italic; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.footer .num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.footer .fs-btn {
+  width: 48px; height: 48px; margin-right: -12px; border: 0; background: transparent; color: var(--graphite);
+  display: grid; place-items: center; cursor: pointer; border-radius: 8px; opacity: .55;
+}
+.footer .fs-btn:hover { opacity: 1; background: var(--paper-deep); }
+.footer .fs-btn:focus-visible { outline: 3px solid var(--ink); opacity: 1; }
+
+/* progress indicator: the roadmap path, small */
+.progress .prog-main, .progress .prog-extra { display: flex; align-items: center; }
+.progress { display: flex; align-items: center; gap: 0; white-space: nowrap; transition: opacity 300ms ease; }
+.progress.hidden { opacity: 0; pointer-events: none; }
+.progress .seg { display: flex; align-items: center; gap: 9px; color: var(--graphite); border-radius: 8px; padding: 6px 8px; margin: -6px -8px; }
+.progress .seg.nav { cursor: pointer; }
+.progress .seg.nav:hover { background: var(--paper-deep); color: var(--ink); }
+.progress .dot { width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--graphite); background: var(--paper); flex: none; }
+.progress .link { width: 22px; height: 2px; background: var(--rule); margin: 0 10px; flex: none; }
+.progress .seg.done .dot { background: var(--graphite); }
+.progress .seg.current { color: var(--ink); font-weight: 700; }
+.progress .seg.current .dot { background: var(--ink); border-color: var(--ink); width: 14px; height: 14px; }
+
+/* illustrative tag */
+.illus { font-size: var(--fs-caption); font-style: italic; color: var(--graphite); }
+
+/* Q&A back button: only on a slide reached from a Questions tile (Esc also returns) */
+.back-btn {
+  display: none; position: absolute; left: var(--mx); top: 28px; z-index: 55;
+  font: inherit; font-size: 22px; color: var(--ink); background: var(--panel);
+  border: 2px solid var(--ink); border-radius: 999px; padding: 8px 20px; cursor: pointer;
+}
+.back-btn.on { display: inline-block; }
+.back-btn:hover { background: var(--paper-deep); }
+.back-btn:focus-visible { outline: 3px solid var(--q); outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .slide, .slide.active, .footer, [data-build], .build-off { transition: none !important; }
+}

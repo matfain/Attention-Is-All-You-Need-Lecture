@@ -1,0 +1,207 @@
+{
+  "_source": "docs/lecture-content.md, Part 1.",
+  "seq2seqExamples": [
+    {
+      "key": "translation",
+      "label": "Translation",
+      "srcKind": "tokens",
+      "src": [
+        "the",
+        "cat",
+        "sat"
+      ],
+      "tgt": [
+        "die",
+        "Katze",
+        "saß"
+      ]
+    },
+    {
+      "key": "summarization",
+      "label": "Summarization",
+      "srcKind": "tokens",
+      "src": [
+        "Officials",
+        "announced",
+        "on",
+        "Monday",
+        "that",
+        "the",
+        "city's",
+        "new",
+        "tram",
+        "line",
+        "…"
+      ],
+      "tgt": [
+        "New",
+        "tram",
+        "line",
+        "opens"
+      ]
+    },
+    {
+      "key": "speech",
+      "label": "Speech-to-text",
+      "srcKind": "waveform",
+      "src": [],
+      "tgt": [
+        "the",
+        "cat",
+        "sat"
+      ]
+    },
+    {
+      "key": "llm",
+      "label": "LLM chat",
+      "srcKind": "tokens",
+      "src": [
+        "Translate",
+        "'the",
+        "cat",
+        "sat'",
+        "to",
+        "German"
+      ],
+      "tgt": [
+        "Die",
+        "Katze",
+        "saß."
+      ]
+    }
+  ],
+  "textToVec": {
+    "_note": "slide s-tok (text in, probabilities out). Ids and shades are toy values; vocabulary 37K and d_model 512 are the paper's (EN-DE BPE, base model). Sub-word split as in GPT-style BPE tokenizers.",
+    "tokens": ["the", "cat", "sat"],
+    "ids": [5, 2431, 8117],
+    "embedRows": [2, 6, 10],
+    "embed": [[0.85, 0.2, 0.55, 0.35], [0.3, 0.9, 0.15, 0.6], [0.6, 0.4, 0.8, 0.1]],
+    "out": [[0.5, 0.15, 0.7, 0.3], [0.2, 0.65, 0.4, 0.85], [0.75, 0.35, 0.2, 0.6]],
+    "subword": { "word": "tokenization", "pieces": ["token", "ization"] },
+    "vocab": ["on", "down", "up", "by"],
+    "probs": [0.55, 0.22, 0.15, 0.08],
+    "next": "on"
+  },
+  "rnnTokens": [
+    "the",
+    "cat",
+    "sat",
+    "…",
+    "…"
+  ],
+  "rnnShares": {
+    "_note": "illustrative share of each word read so far inside h_t (fixed capacity; older words diluted). h_4, h_5 continue the pattern of h_1-h_3.",
+    "shares": [
+      [
+        1.0
+      ],
+      [
+        0.4,
+        0.6
+      ],
+      [
+        0.15,
+        0.3,
+        0.55
+      ],
+      [
+        0.08,
+        0.17,
+        0.3,
+        0.45
+      ],
+      [
+        0.04,
+        0.09,
+        0.17,
+        0.28,
+        0.42
+      ]
+    ]
+  },
+  "bahdanau": {
+    "_note": "illustrative weights; rows = target, cols = source",
+    "source": [
+      "the",
+      "cat",
+      "sat"
+    ],
+    "target": [
+      "die",
+      "Katze",
+      "saß"
+    ],
+    "weights": [
+      [
+        0.8,
+        0.15,
+        0.05
+      ],
+      [
+        0.1,
+        0.85,
+        0.05
+      ],
+      [
+        0.05,
+        0.15,
+        0.8
+      ]
+    ],
+    "_logitsNote": "illustrative scores e_{t,j} (score step); softmax of each row rounds to `weights` (verified by script)",
+    "logits": [
+      [
+        2.8,
+        1.1,
+        0.0
+      ],
+      [
+        0.7,
+        2.8,
+        0.0
+      ],
+      [
+        0.0,
+        1.1,
+        2.8
+      ]
+    ],
+    "defaultRow": 1,
+    "_statesNote": "illustrative encoder-state shading (0-1), 4 cells each, no numbers shown on slide",
+    "encoderStates": [
+      [
+        0.9,
+        0.15,
+        0.65,
+        0.1
+      ],
+      [
+        0.2,
+        0.85,
+        0.3,
+        0.75
+      ],
+      [
+        0.55,
+        0.1,
+        0.9,
+        0.4
+      ]
+    ]
+  },
+  "paper": {
+    "title": "Attention Is All You Need",
+    "venue": "NeurIPS 2017",
+    "authors": [
+      "Ashish Vaswani",
+      "Noam Shazeer",
+      "Niki Parmar",
+      "Jakob Uszkoreit",
+      "Llion Jones",
+      "Aidan N. Gomez",
+      "Łukasz Kaiser",
+      "Illia Polosukhin"
+    ],
+    "affiliations": "Google Brain · Google Research · University of Toronto"
+  }
+}

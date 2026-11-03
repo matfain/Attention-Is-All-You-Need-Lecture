@@ -1,0 +1,187 @@
+/* Component library styles (docs/framework.md, Components). */
+
+/* ---------- TokenChip ---------- */
+.chip {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 52px; padding: 0 16px; border-radius: 10px;
+  font-family: var(--font-mono); font-size: 27px; line-height: 1; color: var(--ink);
+  border: 2px solid var(--graphite); background: var(--panel);
+  white-space: nowrap;
+  transition: opacity 180ms ease, background 180ms ease, border-color 180ms ease;
+}
+.chip.src { background: var(--src-tint); border-color: var(--src); }
+.chip.tgt { background: var(--tgt-tint); border-color: var(--tgt); }
+.chip.neutral { background: var(--panel); border-color: var(--rule); color: var(--graphite); }
+.chip.dim { opacity: .3; }
+.chip.highlight { box-shadow: 0 0 0 3px var(--ink); }
+.chip.sm { height: 44px; padding: 0 12px; font-size: 24px; }
+
+/* SVG chip */
+g.schip rect { stroke-width: 2; rx: 10; }
+g.schip text { font-family: var(--font-mono); font-size: 27px; fill: var(--ink); dominant-baseline: central; text-anchor: middle; }
+g.schip.src rect { fill: var(--src-tint); stroke: var(--src); }
+g.schip.tgt rect { fill: var(--tgt-tint); stroke: var(--tgt); }
+g.schip.neutral rect { fill: var(--panel); stroke: var(--rule); stroke-dasharray: 6 5; }
+g.schip.neutral text { fill: var(--graphite); }
+g.schip.dim { opacity: .3; }
+g.schip.highlight rect { stroke: var(--ink); stroke-width: 3; }
+g.schip.clickable { cursor: pointer; }
+g.schip { transition: opacity 180ms ease; }
+
+/* ---------- AttentionLines ---------- */
+path.attn { fill: none; stroke: var(--ink); stroke-linecap: round; transition: stroke-width 260ms ease, opacity 260ms ease; }
+path.attn.problem { stroke: var(--problem); }
+path.attn.indigo { stroke: var(--ramp-3); }
+
+/* generic SVG ink */
+.wire { fill: none; stroke: var(--ink); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.wire.graphite { stroke: var(--graphite); }
+.wire.problem { stroke: var(--problem); stroke-width: 4; }
+.wire.dashed { stroke-dasharray: 8 7; }
+svg text { font-family: var(--font-text); fill: var(--ink); }
+svg text.lbl { font-size: 26px; }
+svg text.cap { font-size: 22px; fill: var(--graphite); }
+svg text.mono { font-family: var(--font-mono); }
+svg text.problem-ink { fill: var(--problem-ink); }
+svg text.src-ink { fill: var(--src-ink); }
+svg text.tgt-ink { fill: var(--tgt-ink); }
+svg text.bold { font-weight: 700; }
+svg text.italic { font-style: italic; }
+svg { overflow: visible; }
+
+/* state boxes (RNN hidden states etc.) */
+rect.state { stroke-width: 2.5; rx: 8; }
+rect.state.src { fill: var(--src-tint); stroke: var(--src); }
+rect.state.tgt { fill: var(--tgt-tint); stroke: var(--tgt); }
+rect.state.off { fill: var(--paper); stroke: var(--rule); stroke-dasharray: 7 6; }
+rect.state.panel { fill: var(--panel); stroke: var(--src); }
+
+/* ---------- VectorBar ---------- */
+rect.vcell { stroke: var(--paper); stroke-width: 2; }
+rect.vframe { fill: none; stroke-width: 2; rx: 4; }
+rect.vframe.src { stroke: var(--src); } rect.vframe.tgt { stroke: var(--tgt); }
+rect.vframe.q { stroke: var(--q); } rect.vframe.k { stroke: var(--k); } rect.vframe.v { stroke: var(--v); }
+rect.vframe.ink { stroke: var(--ink); }
+
+/* ---------- WeightBars ---------- */
+.wbar { transition: height 260ms ease, y 260ms ease, fill 200ms ease; }
+.wbar.top { fill: var(--ink); }
+.wbar.rest { fill: var(--graphite); opacity: .55; }
+svg text.wval { font-family: KaTeX_Main, var(--font-text); font-size: 25px; text-anchor: middle; font-variant-numeric: tabular-nums; }
+svg text.wval.top { font-weight: 700; }
+svg text.wlab { font-family: var(--font-mono); font-size: 24px; text-anchor: middle; }
+
+/* ---------- Matrix ---------- */
+.mtx { display: inline-grid; gap: 4px; align-items: center; justify-items: center; }
+.mtx .cell {
+  width: var(--cell, 72px); height: var(--cell, 72px);
+  display: grid; place-items: center;
+  font-family: KaTeX_Main, var(--font-text); font-size: 26px; font-variant-numeric: tabular-nums;
+  background: var(--panel); border: 1px solid var(--rule); border-radius: 4px;
+  transition: background 220ms ease, color 220ms ease, opacity 220ms ease, box-shadow 220ms ease;
+}
+.mtx .cell.dark { color: #fff; }
+.mtx .cell.masked {
+  background: var(--paper-deep)
+    repeating-linear-gradient(45deg, var(--rule) 0 2px, transparent 2px 10px);
+  color: var(--graphite);
+}
+.mtx .cell.dimmed { opacity: .28; }
+.mtx .cell.rowhl { box-shadow: 0 0 0 3px var(--ink); position: relative; z-index: 1; }
+.mtx .rlab, .mtx .clab { font-family: var(--font-mono); font-size: 24px; }
+.mtx .rlab { justify-self: end; padding-right: 6px; }
+.mtx .rlab.clickable { cursor: pointer; }
+.mtx .rlab .chip, .mtx .clab .chip { height: 44px; padding: 0 12px; font-size: 24px; }
+.mtx-frame { display: inline-flex; flex-direction: column; align-items: center; gap: 10px; }
+.mtx-frame .shape { font-size: var(--fs-caption); color: var(--graphite); }
+.mtx-framed { padding: 8px; border-radius: 8px; border: 3px solid var(--ink); }
+.mtx-framed.q { border-color: var(--q); } .mtx-framed.k { border-color: var(--k); } .mtx-framed.v { border-color: var(--v); }
+
+/* ---------- Badge / Callout ---------- */
+.badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 6px 16px; border-radius: 999px;
+  background: var(--paper-deep); border: 1px solid var(--rule);
+  font-size: var(--fs-caption); line-height: 1.3; color: var(--ink); white-space: nowrap;
+}
+.badge.lg { font-size: 26px; padding: 8px 20px; }
+.badge.problem { border-color: var(--problem); color: var(--problem-ink); background: var(--problem-tint); }
+.icon { display: inline-block; vertical-align: middle; }
+
+/* ---------- Table (booktabs) ---------- */
+table.bt { border-collapse: collapse; font-size: 28px; line-height: 1.3; background: transparent; }
+table.bt th, table.bt td { padding: 14px 26px; text-align: left; vertical-align: middle; }
+table.bt thead tr:first-child th { border-top: 2px solid var(--ink); }
+table.bt thead th { border-bottom: 1px solid var(--ink); font-weight: 700; }
+table.bt tbody tr:last-child td { border-bottom: 2px solid var(--ink); }
+table.bt td.num, table.bt th.num { text-align: right; font-variant-numeric: tabular-nums; }
+table.bt td.center, table.bt th.center { text-align: center; }
+table.bt tr.hl td { background: var(--hl-tint); }
+table.bt tr.near td { background: var(--hl-tint); outline: 2px dotted var(--graphite); outline-offset: -3px; }
+table.bt td.grey { color: color-mix(in srgb, var(--graphite) 60%, var(--paper)); }
+table.bt td.problem { color: var(--problem-ink); background: var(--problem-tint); font-weight: 700; }
+table.bt td.rowhead { color: var(--graphite); font-size: 24px; }
+
+/* ---------- Controls ---------- */
+.seg-ctl { display: inline-flex; border: 2px solid var(--ink); border-radius: 12px; overflow: hidden; background: var(--panel); }
+.seg-ctl button {
+  font: inherit; font-size: 24px; color: var(--ink); background: transparent; border: 0;
+  min-height: 56px; padding: 0 24px; cursor: pointer;
+  border-left: 1px solid var(--rule);
+}
+.seg-ctl button:first-child { border-left: 0; }
+.seg-ctl.indicator { pointer-events: none; }
+.seg-ctl.indicator button { cursor: default; color: var(--ink); }
+.seg-ctl button[aria-pressed="true"] { background: var(--ink); color: var(--panel); font-weight: 700; }
+.seg-ctl button:focus-visible, .btn:focus-visible { outline: 3px solid var(--q); outline-offset: 2px; }
+.btn {
+  font: inherit; font-size: 24px; color: var(--ink); background: var(--panel);
+  border: 2px solid var(--ink); border-radius: 12px; min-height: 56px; padding: 0 24px; cursor: pointer;
+}
+
+/* panels */
+.panel { background: var(--panel); border: 1px solid var(--rule); border-radius: 14px; }
+
+/* ---------- Architecture map ---------- */
+svg.amap text { font-size: 26px; text-anchor: middle; dominant-baseline: central; fill: var(--ink); }
+svg.amap text.side { font-size: 25px; fill: var(--graphite); }
+svg.amap text.nx { font-size: 28px; fill: var(--graphite); }
+svg.amap .blk rect { stroke: var(--ink); stroke-width: 2; rx: 9; }
+svg.amap .blk.attn rect { fill: var(--attn-block); }
+svg.amap .blk.ffn rect { fill: var(--k-tint); }
+svg.amap .blk.norm rect { fill: var(--paper-deep); stroke: var(--rule); stroke-width: 2; }
+svg.amap .blk.norm.hl rect { stroke: var(--ink); }
+svg.amap .blk.emb-src rect { fill: var(--src-tint); stroke: var(--src); }
+svg.amap .blk.emb-tgt rect { fill: var(--tgt-tint); stroke: var(--tgt); }
+svg.amap .blk.head rect { fill: var(--panel); }
+svg.amap .frame { stroke-width: 2.5; rx: 18; }
+svg.amap .frame.enc { fill: color-mix(in srgb, var(--src) 5%, var(--paper)); stroke: color-mix(in srgb, var(--src) 40%, var(--paper)); }
+svg.amap .frame.dec { fill: color-mix(in srgb, var(--tgt) 6%, var(--paper)); stroke: color-mix(in srgb, var(--tgt) 45%, var(--paper)); }
+svg.amap .w { fill: none; stroke: var(--ink); stroke-width: 2.4; stroke-linejoin: round; }
+svg.amap .pe-glyph { fill: var(--panel); stroke: var(--ink); stroke-width: 2; }
+svg.amap .pe-wave { fill: none; stroke: var(--ink); stroke-width: 2; }
+svg.amap [data-id] { transition: opacity 220ms ease; }
+svg.amap.focus [data-id]:not(.hl) { opacity: .22; }
+svg.amap .hl rect, svg.amap .hl.frame { stroke: var(--ink); stroke-width: 3.5; }
+svg.amap .hl .w, svg.amap .w.hl { stroke-width: 3.2; }
+svg.amap .pulse { fill: none; stroke: var(--ink); stroke-width: 6; stroke-linecap: round; opacity: 0; }
+svg.amap .am-badge rect { fill: var(--paper-deep); stroke: var(--rule); stroke-width: 1.5; }
+svg.amap .am-badge text { font-size: 24px; }
+svg.amap.thumb text, svg.amap.thumb .am-badge { display: none; }
+svg.amap.thumb .w { stroke-width: 3; }
+svg.amap.thumb .blk rect, svg.amap.thumb .frame { stroke-width: 3; }
+svg.amap.thumb.focus [data-id]:not(.hl) { opacity: .28; }
+svg.amap.thumb .hl rect { stroke-width: 6; }
+svg.amap.faded { opacity: .16; }
+.map-thumb {
+  position: absolute; right: var(--mx); top: 40px; width: 230px;
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+}
+.map-credit { font-size: 20px; color: var(--graphite); font-style: italic; }
+
+/* stage title over a group of a pipeline (slides without bullets: s-tok, s-4), with a rule spanning the group */
+.stage-title { padding-bottom: 12px; border-bottom: 3px solid var(--rule); text-align: center; font-size: 34px; font-weight: 700; white-space: nowrap; }
+.stage-sub { text-align: center; font-size: 30px; line-height: 1.35; white-space: nowrap; }
+.stage-sub b { color: var(--key); }
+.stage-sub b.problem-ink { color: var(--problem-ink); }
+.stage-sub .caption { font-size: 24px; }

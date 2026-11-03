@@ -1,0 +1,237 @@
+/* Part 2a slide styles. */
+
+/* role-coloured 2-cell vectors (q / k / v) */
+rect.v2 { stroke-width: 2; }
+rect.v2.q { fill: var(--q-tint); stroke: var(--q); }
+rect.v2.k { fill: var(--k-tint); stroke: var(--k); }
+rect.v2.v { fill: var(--v-tint); stroke: var(--v); }
+svg text.v2t { font-family: KaTeX_Main, var(--font-text); font-size: 24px; text-anchor: middle; dominant-baseline: central; }
+svg text.v2t.q-lab { fill: var(--q-ink); font-family: var(--font-mono); }
+svg text.v2t.k-lab { fill: var(--k-ink); font-family: var(--font-mono); }
+svg text.v2t.v-lab { fill: var(--v-ink); font-family: var(--font-mono); }
+.eq-line { margin: 6px 0 2px; }
+.eq-line .katex { font-size: 1.15em; }
+
+/* s-2-0 tour */
+.tour-label { font-size: 28px; color: var(--graphite); display: flex; align-items: center; gap: 12px; white-space: nowrap; transition: opacity var(--t-build) ease, color 200ms ease; }
+.tour-label.current { color: var(--ink); font-weight: 700; }
+.tour-num { width: 36px; height: 36px; border-radius: 50%; border: 2px solid currentColor; display: grid; place-items: center; font-size: 20px; font-weight: 700; flex: none; }
+.tour-label.current .tour-num { background: var(--ink); color: var(--panel); border-color: var(--ink); }
+path.tour-leader { fill: none; stroke: var(--rule); stroke-width: 2; transition: opacity var(--t-build) ease, stroke 200ms ease; }
+path.tour-leader.current { stroke: var(--ink); stroke-width: 2.5; }
+.tour-final { font-size: 32px; }
+.tour-final b { color: var(--key); }
+
+/* s-2-1a */
+.s21a > li { margin-bottom: 26px; }
+.qkv-lines { margin-top: 8px; display: grid; gap: 6px; }
+.qkv-lines > div { font-size: 30px; }
+.qkv-lines .muted { font-style: italic; margin-left: 6px; }
+.s21a-vis svg text.wl { font-family: KaTeX_Main, var(--font-text); font-size: 26px; text-anchor: middle; fill: var(--graphite); }
+.s21a-vis svg text.wl.top { fill: var(--ink); font-weight: 700; }
+.z-row { display: inline-flex; gap: 4px; }
+.zc, .v2c { display: inline-grid; place-items: center; min-width: 60px; height: 44px; border-radius: 5px; font-family: KaTeX_Main, var(--font-text); font-size: 24px; background: var(--panel); border: 2px solid var(--ink); }
+
+/* s-2-1b */
+.mx-arrow { display: flex; flex-direction: column; align-items: center; }
+.mx-alab { font-size: 24px; margin-bottom: 4px; white-space: nowrap; }
+.rows-live .mtx .rlab[data-row] { cursor: pointer; }
+.s21b-panel .caption { display: flex; align-items: center; gap: 10px; }
+.blend-row, .blend-sum { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; transition: opacity 200ms ease; }
+.blend-sum { margin-top: 16px; padding-top: 12px; border-top: 1.5px solid var(--ink); }
+.bw { width: 70px; text-align: right; font-family: KaTeX_Main, var(--font-text); font-size: 24px; }
+.v2row { display: inline-flex; gap: 4px; }
+.v2row.v .v2c { background: var(--v-tint); border-color: var(--v); }
+.v2row.z .v2c { border-color: var(--ink); background: var(--hl-tint); }
+.bl-tok { font-size: 22px; color: var(--graphite); }
+.scaleup .su-row { display: flex; align-items: center; justify-content: center; gap: 16px; }
+.su-op { font-size: 30px; white-space: nowrap; }
+.scaleup .shape { font-size: 26px; }
+.su-badges { margin-top: 44px; display: flex; justify-content: center; align-items: center; gap: 16px; }
+.mtx .cell:empty { min-height: 0; }
+
+/* s-2-2 */
+.s22-step { text-align: center; font-size: 28px; line-height: 1.35; display: flex; flex-direction: column; gap: 12px; }
+.s22-step b { color: var(--key); }
+.s22-step .s22-key { color: var(--ink); }
+.s22-slider .caption { text-align: center; }
+.s22-vis svg text.wlab .al { font-family: KaTeX_Math, serif; font-style: italic; font-size: 26px; }
+.s22-vis svg text.wlab .al-sub { font-family: KaTeX_Main, serif; font-size: 20px; }
+.s22-step .s22-note { font-size: 24px; color: var(--graphite); margin-left: 8px; }
+.s22-vis { padding: 40px 40px; }
+.s22-ctl { width: 560px; display: flex; flex-direction: column; gap: 28px; }
+.s22-ctl .seg-ctl { align-self: center; }
+.s22-slider { flex: 1; }
+.s22-slider .caption, .s27-ctl .caption { font-size: 26px; color: var(--ink); margin-bottom: 8px; }
+.s27-ctl .caption { margin-bottom: 14px; text-align: center; }
+/* the two PE formulas: second line centred under the first */
+.s27-lam { transform: translateX(-50%); white-space: nowrap; font-size: 24px; }
+.pe-eqs { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.ticks { position: relative; height: 28px; margin: 4px 14px 0; }
+.ticks span { position: absolute; transform: translateX(-50%); font-size: 22px; color: var(--graphite); font-family: KaTeX_Main, var(--font-text); }
+input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 48px; background: transparent; cursor: pointer; margin: 0; }
+input[type=range]::-webkit-slider-runnable-track { height: 6px; border-radius: 3px; background: var(--rule); }
+input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 30px; height: 30px; border-radius: 50%; background: var(--ink); border: 4px solid var(--panel); box-shadow: 0 0 0 2px var(--ink); margin-top: -12px; }
+input[type=range]::-moz-range-track { height: 6px; border-radius: 3px; background: var(--rule); }
+input[type=range]::-moz-range-thumb { width: 24px; height: 24px; border-radius: 50%; background: var(--ink); border: 4px solid var(--panel); box-shadow: 0 0 0 2px var(--ink); }
+input[type=range]:focus-visible { outline: 3px solid var(--q); outline-offset: 4px; }
+.s22-read { font-size: 22px; }
+.s22-vis .wbars text.wlab { font-size: 22px; }
+
+/* s-2-3 */
+.heads { display: flex; gap: 34px; }
+.head { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.head-lab { font-size: 24px; }
+.sb-row { display: flex; align-items: center; justify-content: center; gap: 16px; }
+.sb { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.sb-wrap { position: relative; }
+.sb-card { position: absolute; border: 2px solid; border-radius: 6px; }
+.sb-lab { font-size: 22px; text-align: center; white-space: nowrap; }
+.sb-op { font-size: 24px; text-align: center; color: var(--ink); }
+.sb-callout { text-align: center; margin-top: 34px; }
+.ab-stack { position: relative; width: calc(5 * 44px + 30px); height: calc(5 * 44px + 30px); }
+.ab-card { position: absolute; width: calc(5 * 44px); height: calc(5 * 44px); background: var(--panel); border: 2px solid var(--ink); border-radius: 6px; display: grid; place-items: center; }
+.ab-card .mtx-frame .shape { display: none; }
+
+/* s-2-4 */
+svg.mini-layer text { font-size: 24px; }
+svg.mini-layer.focus [data-id]:not(.hl) { opacity: .3; }
+.s24-j svg text { font-size: 24px; }
+
+/* s-2-3 multi-head fan-out / fan-in */
+.mh rect.mh-x { fill: var(--src-tint); stroke: var(--src); stroke-width: 2.5; }
+.mh rect.mh-qkv { stroke-width: 2.5; }
+.mh rect.mh-qkv.q { fill: var(--q-tint); stroke: var(--q); }
+.mh rect.mh-qkv.k { fill: var(--k-tint); stroke: var(--k); }
+.mh rect.mh-qkv.v { fill: var(--v-tint); stroke: var(--v); }
+.mh rect.mh-cell { stroke: var(--rule); stroke-width: 1; }
+.mh line.mh-row { stroke: var(--v); stroke-width: 1.2; opacity: .6; }
+.mh circle.oplus { fill: var(--panel); stroke: var(--ink); stroke-width: 2.5; }
+.mh .mh-w { font-size: 24px; }
+.mh .mh-qkv-lab { font-size: 24px; }
+.mh .mh-xv { font-size: 22px; }
+.mh .mh-head { font-size: 24px; line-height: 1.3; }
+.mh .mh-dots { font-size: 24px; }
+.mh svg text.mh-col { font-family: var(--font-mono); font-size: 22px; fill: var(--src-ink); text-anchor: middle; }
+.mh .mh-formula { font-size: 24px; }
+
+/* s-2-5 cross-attention */
+.ca-tag { font-size: 26px; background: var(--paper); padding: 0 6px; border-radius: 6px; }
+.ca-cap { font-size: 24px; }
+
+/* s-2-6 */
+rect.sa-box { fill: var(--attn-block); stroke: var(--ink); stroke-width: 2; }
+.sa-lab { color: var(--ink); font-size: 24px; }
+.s26 .vbar.dogbar rect.vframe { stroke: var(--ink); stroke-width: 3; }
+.equiv .katex { font-size: 40px; }
+.dog-lab { color: var(--ink); font-weight: 700; }
+
+/* s-2-7 */
+.s27-dials .dial-face { fill: var(--panel); stroke: var(--ink); stroke-width: 2.5; }
+.s27-dials .dial-tick { stroke: var(--graphite); stroke-width: 2.5; }
+.s27-dials .dial-hand { stroke: var(--ink); stroke-width: 4; stroke-linecap: round; }
+.s27-dials .dial-tip { fill: var(--ink); }
+.s27-dials .dial-hub { fill: var(--ink); }
+.s27-dials text { text-anchor: middle; }
+.s27-dials text.dial-i { font-size: 24px; font-weight: 700; }
+.s27-dials text.dial-l { font-size: 22px; fill: var(--graphite); }
+.s27-hm canvas, .s28-hm canvas { image-rendering: pixelated; display: block; border: 1px solid var(--rule); }
+.hm-row { position: absolute; left: -6px; right: -6px; border: 3px solid var(--ink); border-radius: 3px; pointer-events: none; box-shadow: 0 0 0 2px var(--panel), inset 0 0 0 2px var(--panel); }
+.hm-ylab { left: -12px; top: 0; transform: rotate(-90deg) translateX(-100%); transform-origin: 0 0; white-space: nowrap; }
+.s27-hm .hm-ylab { left: -40px; }
+.s28-hm .hm-ylab { left: -40px; }
+
+/* s-2-8 */
+.s28 > li { margin-bottom: 30px; }
+.badge.wrap { display: block; white-space: normal; border-radius: 18px; line-height: 1.45; padding: 12px 22px; }
+.hm-cross { position: absolute; border: 3px solid var(--ink); box-shadow: 0 0 0 2px var(--panel); pointer-events: none; }
+.s28-read { font-size: 26px; }
+.s28-read b { font-family: KaTeX_Main, var(--font-text); }
+
+.s24-j circle.oplus { fill: var(--panel); stroke: var(--ink); stroke-width: 2.5; }
+.s24-j rect.ln-box { fill: var(--paper-deep); stroke: var(--ink); stroke-width: 2; }
+.s24-j svg text.ln-t { font-size: 22px; text-anchor: middle; dominant-baseline: central; font-weight: 700; }
+
+/* s-2-1a schematic */
+rect.sch-box { fill: var(--panel); stroke: var(--ink); stroke-width: 2; }
+rect.sch-box.sm { fill: var(--paper-deep); }
+circle.sch-op { fill: var(--panel); stroke: var(--ink); stroke-width: 2.5; }
+.s21a-vis .wire.res { stroke: var(--graphite); stroke-dasharray: 8 6; }
+.res-lab { transform: translate(-50%, -50%) rotate(-90deg) !important; background: var(--paper); padding: 0 8px; }
+.sch-t { color: var(--ink); font-size: 24px; }
+.sa-intu { font-size: 24px; }
+.mx-tag { transform: translateX(-50%); font-size: 26px; font-weight: 700; color: var(--key); white-space: nowrap; }
+.sa-intu .muted { font-style: italic; }
+.sub-note { font-size: 26px; color: var(--graphite); margin-top: 4px; }
+.oplus-t { font-size: 44px; line-height: 1; }
+.mx-op { font-size: 44px; transform: translate(-50%, -50%); }
+.mx-op .katex { font-size: 44px; }
+.hm-tick { position: absolute; top: -34px; transform: translateX(-50%); font-size: 20px; color: var(--ink); white-space: nowrap; }
+.hm-tick::after { content: ''; position: absolute; left: 50%; top: 26px; width: 2px; height: 10px; background: var(--ink); }
+.hm-tick.bare { height: 26px; }
+.pe-top { white-space: nowrap; } .pe-top .katex { font-size: 34px; }
+.pe-gen .katex { font-size: 30px; }
+.wo-def .wo-row { display: flex; align-items: center; gap: 12px; }
+.wo-def .wo-row > .katex { font-size: 30px; }
+.wo-cap { margin-bottom: 8px; }
+.s27-hm canvas { border: 1px solid var(--rule); }
+.s27-list > li { margin-bottom: 8px; }
+
+/* ---------- Part 2b ---------- */
+/* s-2-9 full flow */
+.ff-label { gap: 14px; }
+.ff-body { display: flex; flex-direction: column; gap: 8px; font-size: 26px; }
+.ff-label.l .ff-body { align-items: flex-end; text-align: right; }
+.ff-label.r .ff-body { align-items: flex-start; }
+.ff-body > span { display: inline-flex; align-items: center; gap: 10px; }
+.ff-chips { gap: 6px !important; }
+.ff-sub { font-size: 22px; }
+.ff-label .badge { font-size: 22px; }
+.tour-label:not(.current) .chip { opacity: .55; }
+
+/* s-2-11 causal masking */
+.mtx .cell.cheat { box-shadow: 0 0 0 4px var(--problem); position: relative; z-index: 1; }
+.cheat-lab { font-size: 26px; font-weight: 700; }
+.s210-vis path.attn { transition: stroke-width 260ms ease, opacity 260ms ease; }
+
+/* s-2-10 prediction head */
+.s211 > li { margin-bottom: 12px; }
+rect.gen-dec { fill: var(--tgt-tint); stroke: var(--tgt); stroke-width: 2; }
+rect.gen-head { fill: var(--panel); stroke: var(--ink); stroke-width: 2; }
+.gen-dec-lab { font-size: 22px; color: var(--tgt-ink); }
+rect.gen-dec { transition: width 220ms ease; }
+.gen-head-lab { text-align: center; font-size: 24px; line-height: 1.2; }
+.gen-head-lab .gen-shape { font-size: 22px; color: var(--graphite); }
+.gen-o { transform: translate(-100%, -50%); font-size: 28px; }
+.gen-chip { transform: translate(-50%, -50%); }
+.gen-chip .chip.next { border-style: dashed; background: var(--panel); }
+.gen-chip .chip.dim { opacity: .45; }
+.gen-pos, .gen-o { transition: opacity 200ms ease; }
+.gen-dim { opacity: .35; }
+.gen-unch { text-align: center; white-space: nowrap; }
+.gen-stop { transform: translate(0, -50%); }
+
+/* s-2-12 path length */
+.pl-panel { background: var(--panel); border: 1px solid var(--rule); border-radius: 14px; }
+.pl-title { position: absolute; left: 0; right: 0; top: 18px; text-align: center; font-size: 28px; font-weight: 700; }
+rect.pl-frame { fill: var(--paper); stroke: var(--src); stroke-width: 2; }
+rect.pl-share { fill: var(--src-ink); }
+.pl-pct { font-family: KaTeX_Main, var(--font-text); font-size: 24px; }
+.pl-steps { font-size: 28px; font-weight: 700; }
+.pl-hop { font-size: 28px; display: flex; align-items: center; gap: 10px; background: var(--panel); padding: 2px 10px; border-radius: 10px; }
+path.attn.w1 { stroke: var(--ink); }
+
+/* s-2-11 build 3: the three-kinds table, large */
+table.bt.kinds { font-size: 38px; }
+table.bt.kinds th, table.bt.kinds td { padding: 26px 48px; }
+
+/* s-2-12: comparison table + centred card titles */
+table.bt.pl-tab { font-size: 30px; }
+table.bt.pl-tab th, table.bt.pl-tab td { padding: 12px 34px; }
+table.bt.pl-tab td.rowh { color: var(--graphite); }
+table.bt.pl-tab b { color: var(--key); }
+table.bt.pl-tab b.problem-ink, table.bt.pl-tab .problem-ink { color: var(--problem-ink); }
+.pl-head { font-size: 28px; font-weight: 700; }
+.pl-sub { font-size: 22px; color: var(--graphite); }
+svg text.pl-n { font-size: 20px; fill: var(--problem-ink); text-anchor: middle; font-family: KaTeX_Main, var(--font-text); }
+table.bt.pl-tab th:not(:first-child), table.bt.pl-tab td:not(:first-child) { text-align: center; }

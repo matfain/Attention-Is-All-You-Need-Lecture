@@ -1,0 +1,33 @@
+{
+  "totalSlides": 36,
+  "parts": [
+    {
+      "n": 1,
+      "label": "Background"
+    },
+    {
+      "n": 2,
+      "label": "The Transformer"
+    },
+    {
+      "n": 3,
+      "label": "Why & Results"
+    },
+    {
+      "n": 4,
+      "label": "Ablations"
+    },
+    {
+      "n": 5,
+      "label": "Outlook"
+    },
+    {
+      "n": 6,
+      "label": "Questions",
+      "footerOnly": true,
+      "_note": "footer roadmap only (not on the Roadmap slide); slide 5.3 + references"
+    }
+  ],
+  "presenter": "Matan Fainzilber",
+  "email": "fainzilber@mail.tau.ac.il"
+}

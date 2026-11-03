@@ -1,0 +1,143 @@
+/* Slide-specific styles (Part 1 + test). */
+
+/* s-0 title */
+.s-title .motif {
+  opacity: .5;
+  /* soft hole behind the title block: lines fade out where the text sits */
+  -webkit-mask-image: radial-gradient(ellipse 840px 330px at 620px 510px, transparent 0, transparent 60%, #000 100%);
+  mask-image: radial-gradient(ellipse 840px 330px at 620px 510px, transparent 0, transparent 60%, #000 100%);
+}
+.s-title .motif path.attn { stroke: var(--ramp-3); transition: none; }
+.t-title { margin: 0; font-size: var(--fs-title-slide); font-weight: 700; line-height: 1.1; letter-spacing: -0.01em; }
+.t-sub { margin: 28px 0 0; font-size: var(--fs-subtitle); line-height: 1.25; color: var(--ink); }
+.t-ref { margin: 18px 0 0; font-size: 26px; color: var(--graphite); font-style: italic; }
+.t-seminar { margin: 84px 0 0; font-size: 26px; color: var(--graphite); }
+.t-presenter { margin: 10px 0 0; font-size: 30px; }
+
+/* s-1 roadmap */
+.rm-icons { display: flex; margin-bottom: 26px; }
+.rm-icon { flex: 1; display: flex; justify-content: center; }
+.rm-path { display: flex; position: relative; }
+.rm-path::before { content: ''; position: absolute; left: 10%; right: 10%; top: 29px; height: 3px; background: var(--rule); }
+.rm-node { flex: 1; position: relative; padding: 0 14px; text-align: center; }
+.rm-dot {
+  width: 60px; height: 60px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--panel); border: 3px solid var(--ink); font-size: 30px; font-weight: 700; position: relative; margin: 0 auto;
+}
+.rm-label { margin-top: 32px; font-size: 36px; font-weight: 700; line-height: 1.2; }
+
+/* s-2 seq2seq */
+.s2s-flow { display: flex; align-items: center; gap: 0; }
+.s2s-side { flex: 1; display: flex; flex-wrap: wrap; gap: 12px; align-content: center; min-height: 180px; }
+.s2s-side.src-side { justify-content: flex-end; padding-right: 8px; }
+.s2s-side.tgt-side { justify-content: flex-start; padding-left: 8px; }
+.s2s-model {
+  flex: none; width: 200px; height: 140px; border: 3px solid var(--ink); border-radius: 18px;
+  display: grid; place-items: center; font-size: 30px; font-weight: 700; background: var(--panel);
+}
+.s2s-arrow { flex: none; }
+
+/* s-tok text in, probabilities out */
+.tv-text {
+  height: 68px; padding: 0 22px; display: grid; place-items: center; font-size: 30px;
+  background: var(--panel); border: 2px solid var(--rule); border-radius: 12px;
+}
+.tv .stage-title { top: 440px; }
+.tv .tv-shape { transform: translateX(-50%); white-space: nowrap; text-align: center; }
+.tv .tv-sub { display: flex; align-items: center; gap: 10px; white-space: nowrap; }
+.tv .tv-loss { transform: translateX(-50%); white-space: nowrap; font-size: 30px; font-weight: 700; color: var(--key); }
+.tv .tv-loss .katex { color: inherit; }
+svg text.tv-id { font-family: var(--font-mono); font-size: 24px; fill: var(--graphite); dominant-baseline: central; }
+svg text.wlab.tv-true { fill: var(--src-ink); font-weight: 700; }
+rect.tv-e-frame { fill: var(--panel); stroke: var(--graphite); stroke-width: 2; }
+line.tv-e-rule { stroke: var(--rule); stroke-width: 1; }
+line.tv-edge { stroke: var(--graphite); stroke-width: 1.5; opacity: .45; }
+circle.tv-node { fill: var(--panel); stroke: var(--ink); stroke-width: 2.5; }
+circle.tv-node.in { fill: var(--src-tint); stroke: var(--src); }
+circle.tv-node.out { fill: var(--rule); }
+
+/* s-3 RNN */
+.rnn .hb-frame { fill: var(--paper); stroke: var(--rule); stroke-width: 2.5; stroke-dasharray: 7 6; transition: all 200ms ease; }
+.rnn .hb-segs { opacity: 0; transition: opacity 220ms ease; }
+.rnn .hbox.on .hb-frame { fill: var(--panel); stroke: var(--src); stroke-dasharray: none; }
+.rnn .hbox.on .hb-segs { opacity: 1; }
+.rnn .hbox.current .hb-frame { stroke: var(--ink); stroke-width: 4; }
+.rnn svg text.seg-lab { font-size: 22px; text-anchor: middle; dominant-baseline: central; }
+.rnn .wire { transition: opacity 200ms ease; }
+.rnn .wire.off { opacity: .18; }
+.rnn .counter { transition: opacity 180ms ease; font-size: 24px; color: var(--ink); }
+.rnn .hlabel { transition: opacity 180ms ease; }
+.rnn .hlabel.dimtext { opacity: .35; }
+
+/* s-5 */
+.tf .row-head { font-size: 26px; line-height: 1.35; color: var(--graphite); width: 330px; }
+.tf .row-head > b { display: block; font-size: 34px; color: var(--ink); }
+.tf .row-head .row-sub b { color: var(--key); }
+.tf path.tf-chain { stroke-width: 5; }
+.tf .row-cap { font-size: 28px; line-height: 1.35; }
+.tf .row-cap.problem-ink { font-weight: 700; }
+g.schip.chip-problem rect { stroke: var(--problem); stroke-width: 3; }
+g.schip.chip-unknown rect { stroke-dasharray: 7 6; fill: var(--paper); }
+g.schip.chip-unknown text { fill: var(--problem-ink); }
+.tf .loss { display: flex; align-items: center; gap: 8px; }
+
+/* s-6 / s-7 */
+.dstate { transition: opacity 200ms ease, stroke-width 200ms ease; }
+rect.dstate.s0 { stroke-dasharray: 7 6; fill: var(--paper); }
+rect.dstate.query { stroke: var(--ink); stroke-width: 3.5; }
+.query-lab { font-size: 24px; color: var(--ink); }
+.s8-list > li { margin-bottom: 30px; }
+.icon-list > li { display: flex; gap: 18px; align-items: flex-start; margin-bottom: 34px; }
+.icon-list .icon { flex: none; margin-top: 2px; }
+
+/* s-8 paper card */
+.paper-card { background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: 54px 56px 48px; text-align: center; }
+.pc-rule { height: 6px; background: var(--ink); margin: 0 0 26px; }
+.pc-rule.thin { height: 1.5px; margin: 26px 0 30px; }
+.pc-title { font-family: KaTeX_Main, 'Times New Roman', serif; font-size: 60px; font-weight: 700; line-height: 1.1; }
+.pc-authors { font-size: 26px; line-height: 1.5; }
+.pc-aff { margin-top: 14px; font-size: 22px; color: var(--graphite); }
+.pc-venue { margin-top: 34px; font-size: 22px; color: var(--graphite); font-style: italic; }
+.promise { display: flex; gap: 20px; }
+
+/* test map slide */
+#s-test-map .full-map { display: block; }
+
+/* s-6 attention walkthrough */
+.rail-step { display: flex; gap: 18px; margin-bottom: 20px; padding: 6px 0 6px 16px; border-left: 5px solid transparent; transition: opacity var(--t-build) ease, border-color 200ms ease; }
+.rail-step.current { border-left-color: var(--key); }
+.rail-num { flex: none; width: 42px; height: 42px; border-radius: 50%; border: 2.5px solid var(--ink); display: grid; place-items: center; font-weight: 700; font-size: 24px; background: var(--panel); }
+.rail-step.current .rail-num { background: var(--ink); color: var(--panel); }
+.rail-name { font-size: 28px; font-weight: 700; line-height: 1.2; }
+.rail-step.current .rail-name { color: var(--key); }
+.rail-f { font-size: 27px; margin-top: 4px; }
+.rail-note { font-size: 22px; color: var(--graphite); margin-top: 2px; }
+.bd path.attn.score { stroke: var(--graphite); stroke-width: 2px; stroke-dasharray: 6 6; opacity: .75; }
+.bd svg text.wlabel { font-family: KaTeX_Main, var(--font-text); font-size: 24px; fill: var(--graphite); dominant-baseline: central; }
+.bd svg text.wlabel.top { fill: var(--ink); font-weight: 700; }
+rect.dcell { transition: none; }
+rect.dcell.pending { fill: var(--paper); stroke: var(--rule); stroke-dasharray: 7 6; }
+rect.dcell.s0 { fill: var(--paper); stroke-dasharray: 7 6; }
+rect.dcell.query { stroke: var(--ink); stroke-width: 3.5; }
+rect.dcell.active { stroke: var(--ink); stroke-width: 4; }
+.bd .wire.faint { opacity: .25; }
+.bd .label.faint { opacity: .3; }
+.bd .query-lab { font-size: 24px; color: var(--ink); }
+.bd-heat .heat-title { margin-bottom: 8px; }
+.mtx .cell.logit { color: var(--ink); font-style: normal; }
+.bd svg text.wlabel.logit { fill: var(--ink); }
+.mtx .cell.blank { color: transparent !important; background: var(--panel) !important; }
+.bd-final g.schip.pick { cursor: pointer; }
+.enter { animation: s6-in 240ms ease both; }
+@keyframes s6-in { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .enter { animation: none; } }
+
+/* s-7: the c_t → s_2 arrow and c_t bar are present but faint (same story as s-6) */
+.s7-svg .ctx-arrow, .s7-svg .vbar.ctx { opacity: .5; }
+
+/* s-6: one decoding step = one row (builds 1–5), stacked matrix at build 6 */
+.bd-heat .heat-wrap { position: relative; }
+.bd-heat .heat-full { position: absolute; left: 0; top: 0; }
+.step-mtx .step-q { font-family: var(--font-text); font-size: 22px; color: var(--graphite); display: flex; align-items: center; gap: 8px; }
+.step-qbox { display: inline-grid; place-items: center; min-width: 46px; height: 44px; padding: 0 6px; border: 3px solid var(--ink); border-radius: 8px; background: var(--tgt-tint); color: var(--ink); font-size: 24px; }
+.step-mtx .step-pred { grid-column: span 3; justify-self: center; margin-top: 10px; font-size: 22px; color: var(--graphite); display: flex; align-items: center; gap: 10px; }

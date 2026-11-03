@@ -1,0 +1,256 @@
+{
+  "_source": "docs/lecture-content.md, Part 4 (all numbers from Table 3 of Vaswani et al. 2017)",
+  "heads": [
+    {
+      "h": 1,
+      "dk": 512,
+      "bleu": 24.9,
+      "ppl": 5.29
+    },
+    {
+      "h": 4,
+      "dk": 128,
+      "bleu": 25.5,
+      "ppl": 5
+    },
+    {
+      "h": 8,
+      "dk": 64,
+      "bleu": 25.8,
+      "ppl": 4.92,
+      "base": true
+    },
+    {
+      "h": 16,
+      "dk": 32,
+      "bleu": 25.8,
+      "ppl": 4.91
+    },
+    {
+      "h": 32,
+      "dk": 16,
+      "bleu": 25.4,
+      "ppl": 5.01
+    }
+  ],
+  "headsAxisMin": 24.5,
+  "size": [
+    {
+      "change": "d_model=256",
+      "params": 28,
+      "ppl": 5.75,
+      "bleu": 24.5
+    },
+    {
+      "change": "N=2",
+      "params": 36,
+      "ppl": 6.11,
+      "bleu": 23.7
+    },
+    {
+      "change": "N=4",
+      "params": 50,
+      "ppl": 5.19,
+      "bleu": 25.3
+    },
+    {
+      "change": "d_ff=1024",
+      "params": 53,
+      "ppl": 5.12,
+      "bleu": 25.4
+    },
+    {
+      "change": "base",
+      "params": 65,
+      "ppl": 4.92,
+      "bleu": 25.8,
+      "base": true
+    },
+    {
+      "change": "N=8",
+      "params": 80,
+      "ppl": 4.88,
+      "bleu": 25.5
+    },
+    {
+      "change": "d_ff=4096",
+      "params": 90,
+      "ppl": 4.75,
+      "bleu": 26.2
+    },
+    {
+      "change": "d_model=1024",
+      "params": 168,
+      "ppl": 4.66,
+      "bleu": 26
+    },
+    {
+      "change": "big",
+      "params": 213,
+      "ppl": 4.33,
+      "bleu": 26.4,
+      "big": true
+    }
+  ],
+  "pe": [
+    {
+      "name": "Sinusoidal (base)",
+      "ppl": "4.92",
+      "bleu": "25.8",
+      "extrap": true,
+      "note": "defined by formula"
+    },
+    {
+      "name": "Learned table",
+      "ppl": "4.92",
+      "bleu": "25.7",
+      "extrap": false,
+      "note": "no entry"
+    }
+  ],
+  "baseBleu": 25.8,
+  "nearTie": 0.5,
+  "table3": [
+    [
+      "base",
+      "N=6 · d_model=512 · d_ff=2048 · h=8 · d_k=64",
+      "4.92",
+      "25.8",
+      "65"
+    ],
+    [
+      "A",
+      "h=1, d_k=512",
+      "5.29",
+      "24.9",
+      ""
+    ],
+    [
+      "A",
+      "h=4, d_k=128",
+      "5.00",
+      "25.5",
+      ""
+    ],
+    [
+      "A",
+      "h=16, d_k=32",
+      "4.91",
+      "25.8",
+      ""
+    ],
+    [
+      "A",
+      "h=32, d_k=16",
+      "5.01",
+      "25.4",
+      ""
+    ],
+    [
+      "B",
+      "d_k=16",
+      "5.16",
+      "25.1",
+      "58"
+    ],
+    [
+      "B",
+      "d_k=32",
+      "5.01",
+      "25.4",
+      "60"
+    ],
+    [
+      "C",
+      "N=2",
+      "6.11",
+      "23.7",
+      "36"
+    ],
+    [
+      "C",
+      "N=4",
+      "5.19",
+      "25.3",
+      "50"
+    ],
+    [
+      "C",
+      "N=8",
+      "4.88",
+      "25.5",
+      "80"
+    ],
+    [
+      "C",
+      "d_model=256",
+      "5.75",
+      "24.5",
+      "28"
+    ],
+    [
+      "C",
+      "d_model=1024",
+      "4.66",
+      "26.0",
+      "168"
+    ],
+    [
+      "C",
+      "d_ff=1024",
+      "5.12",
+      "25.4",
+      "53"
+    ],
+    [
+      "C",
+      "d_ff=4096",
+      "4.75",
+      "26.2",
+      "90"
+    ],
+    [
+      "D",
+      "dropout 0.0",
+      "5.77",
+      "24.6",
+      ""
+    ],
+    [
+      "D",
+      "dropout 0.2",
+      "4.95",
+      "25.5",
+      ""
+    ],
+    [
+      "D",
+      "label smoothing 0.0",
+      "4.67",
+      "25.3",
+      ""
+    ],
+    [
+      "D",
+      "label smoothing 0.2",
+      "5.47",
+      "25.7",
+      ""
+    ],
+    [
+      "E",
+      "learned positions",
+      "4.92",
+      "25.7",
+      ""
+    ],
+    [
+      "big",
+      "4 changes + 3× steps",
+      "4.33",
+      "26.4",
+      "213"
+    ]
+  ],
+  "_bigRow": "big = Transformer (big): d_model 1024, d_ff 4096, h 16 (d_k = d_v = 64), dropout 0.3, 300K steps; not a one-factor ablation"
+}

@@ -1,0 +1,37 @@
+{
+  "name": "transformers-lecture",
+  "version": "1.0.0",
+  "description": "An interactive lecture deck on \"Attention Is All You Need\" (Vaswani et al., 2017): one self-contained offline HTML file, built slide by slide with a coding agent",
+  "author": "Matan Fainzilber <fainzilber@mail.tau.ac.il>",
+  "license": "MIT",
+  "private": true,
+  "type": "commonjs",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "node build/build.js",
+    "review": "node build/build.js && node test/review.mjs",
+    "gifs": "node build/build.js && node scripts/make-gifs.mjs",
+    "sync-fonts": "node build/sync-fonts.js",
+    "postinstall": "playwright install chromium"
+  },
+  "keywords": [
+    "transformer",
+    "attention",
+    "lecture",
+    "slides",
+    "presentation",
+    "deck",
+    "katex",
+    "svg"
+  ],
+  "devDependencies": {
+    "@fontsource/atkinson-hyperlegible": "^5.3.0",
+    "@fontsource/jetbrains-mono": "^5.3.0",
+    "gifenc": "^1.0.3",
+    "katex": "^0.19.0",
+    "playwright": "^1.64.1",
+    "pngjs": "^7.0.0"
+  }
+}

@@ -1,0 +1,331 @@
+{
+  "_source": "docs/lecture-content.md, Part 2 (illustrative values).",
+  "heads": {
+    "_note": "illustrative; rows and cols: the, cat, sat",
+    "tokens": [
+      "the",
+      "cat",
+      "sat"
+    ],
+    "list": [
+      {
+        "label": "Head 1",
+        "caption": "self",
+        "weights": [
+          [
+            0.8,
+            0.1,
+            0.1
+          ],
+          [
+            0.1,
+            0.8,
+            0.1
+          ],
+          [
+            0.1,
+            0.1,
+            0.8
+          ]
+        ]
+      },
+      {
+        "label": "Head 2",
+        "caption": "previous word",
+        "weights": [
+          [
+            0.8,
+            0.1,
+            0.1
+          ],
+          [
+            0.85,
+            0.1,
+            0.05
+          ],
+          [
+            0.05,
+            0.85,
+            0.1
+          ]
+        ]
+      },
+      {
+        "label": "Head 8",
+        "caption": "find the noun",
+        "weights": [
+          [
+            0.15,
+            0.75,
+            0.1
+          ],
+          [
+            0.1,
+            0.8,
+            0.1
+          ],
+          [
+            0.1,
+            0.75,
+            0.15
+          ]
+        ]
+      }
+    ]
+  },
+  "crossAttention": {
+    "_note": "illustrative; rows = target positions, cols = source",
+    "rows": [
+      "<BOS>",
+      "die",
+      "Katze"
+    ],
+    "cols": [
+      "the",
+      "cat",
+      "sat"
+    ],
+    "weights": [
+      [
+        0.75,
+        0.15,
+        0.1
+      ],
+      [
+        0.1,
+        0.8,
+        0.1
+      ],
+      [
+        0.1,
+        0.2,
+        0.7
+      ]
+    ]
+  },
+  "causalMask": {
+    "_note": "slide 2.10, illustrative. weights = masked (lower-triangular); unmasked = mask OFF; cheat = [row, col] red arrows (each position looks at the word it must predict)",
+    "tokens": [
+      "<BOS>",
+      "die",
+      "Katze"
+    ],
+    "weights": [
+      [
+        1,
+        0,
+        0
+      ],
+      [
+        0.4,
+        0.6,
+        0
+      ],
+      [
+        0.15,
+        0.25,
+        0.6
+      ]
+    ],
+    "unmasked": [
+      [
+        0.15,
+        0.7,
+        0.15
+      ],
+      [
+        0.1,
+        0.2,
+        0.7
+      ],
+      [
+        0.15,
+        0.25,
+        0.6
+      ]
+    ],
+    "cheat": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "targets": [
+      "die",
+      "Katze",
+      "saß"
+    ]
+  },
+  "generation": {
+    "_note": "illustrative",
+    "vocab": [
+      "die",
+      "Katze",
+      "saß",
+      "Hund",
+      "<EOS>"
+    ],
+    "steps": [
+      {
+        "input": [
+          "<BOS>"
+        ],
+        "probs": [
+          0.5,
+          0.2,
+          0.09,
+          0.16,
+          0.05
+        ],
+        "pick": "die"
+      },
+      {
+        "input": [
+          "<BOS>",
+          "die"
+        ],
+        "probs": [
+          0.04,
+          0.62,
+          0.05,
+          0.25,
+          0.04
+        ],
+        "pick": "Katze"
+      },
+      {
+        "input": [
+          "<BOS>",
+          "die",
+          "Katze"
+        ],
+        "probs": [
+          0.05,
+          0.04,
+          0.71,
+          0.06,
+          0.14
+        ],
+        "pick": "saß"
+      },
+      {
+        "input": [
+          "<BOS>",
+          "die",
+          "Katze",
+          "saß"
+        ],
+        "probs": [
+          0.04,
+          0.04,
+          0.06,
+          0.04,
+          0.82
+        ],
+        "pick": "<EOS>"
+      }
+    ]
+  },
+  "sqrtDk": {
+    "_note": "slide 2.2: random q, k ~ N(0, I), fixed seed per d_k (seedBase + d_k); illustrative",
+    "dkValues": [
+      4,
+      16,
+      64,
+      256,
+      512
+    ],
+    "defaultDk": 512,
+    "defaultScaled": false,
+    "seedBase": 7
+  },
+  "layerJourney": {
+    "_note": "slide 2.4: illustrative 4-cell token vector and sub-layer edits (shading 0-1)",
+    "x": [
+      0.2,
+      0.55,
+      0.35,
+      0.7
+    ],
+    "attnEdit": [
+      0.3,
+      0.1,
+      0.4,
+      0.05
+    ],
+    "ffnEdit": [
+      0.2,
+      0.05,
+      0.1,
+      0.3
+    ]
+  },
+  "permutation": {
+    "_note": "slide 2.6: illustrative output shading per word (identical across word orders)",
+    "vectors": {
+      "dog": [
+        0.9,
+        0.2,
+        0.6,
+        0.3
+      ],
+      "bites": [
+        0.3,
+        0.8,
+        0.2,
+        0.6
+      ],
+      "man": [
+        0.5,
+        0.4,
+        0.9,
+        0.1
+      ]
+    }
+  },
+  "peClocks": {
+    "_note": "slide 2.7: dials for i = 0, 4, 16, 64, 128, 255 with d_model = 512; positions 0-100; heatmap = two blocks side by side, 256 sin entries | 256 cos entries (all 512 dims, reordered)",
+    "dModel": 512,
+    "dials": [
+      0,
+      4,
+      16,
+      64,
+      128,
+      255
+    ],
+    "posMax": 100,
+    "defaultPos": 25,
+    "heatDims": 256
+  },
+  "fullFlow": {
+    "_note": "slide 2.9: paper sizes (EN-DE, shared BPE vocabulary ~37K)",
+    "src": [
+      "the",
+      "cat",
+      "sat"
+    ],
+    "tgt": [
+      "<BOS>",
+      "die",
+      "Katze"
+    ],
+    "dModel": 512,
+    "layers": 6,
+    "vocab": "37K"
+  },
+  "pathLength": {
+    "_note": "slide 2.12: reuses slide 3 chain and its shares for word 1",
+    "wordOneShare": [
+      1,
+      0.4,
+      0.15,
+      0.08,
+      0.04
+    ]
+  }
+}
